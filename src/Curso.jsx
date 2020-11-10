@@ -1,38 +1,42 @@
-import React from 'react'
+import React from "react";
+import PropTypes from 'prop-types'
 
-function Curso() {
-    return (
-      
-        <div>
-          <article class="card">
-            <div class="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-              <img src="path/img" alt=""  />
-            </div> 
-            <div class="card__data s-border s-radius-br s-radius-bl s-pxy-2">
-              <h3 class="t5 s-mb-2 s-center">
-                Programación orientada a objetos con Go
-              </h3>
-              <div class="s-mb-2 s-main-center">
-                <div class="card__teacher s-cross-center">
-                  <div class="card__avatar s-mr-1">
-                    <div class="circle img-container">
-                      <img src="https://i.pinimg.com/originals/56/fb/7c/56fb7c933e1a0b8dc6705982eb372b4d.jpg" alt="" />
-                    </div>
-                  </div>
-                    <span class="small">Alexys Lozada</span>
-                  </div>
-                </div>
-                <div class="s-main-center">
-                  <a class="button--ghost-alert button--tiny" href="#">$ 20USD</a>
-                </div>
-              </div>
-          </article>
+
+function Curso({image,title,price,profesor}) {
+  return (
+    <article class="card">
+      <div class="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
+        <img src={image} alt={title} />
+      </div>
+      <div class="card__data s-border s-radius-br s-radius-bl s-pxy-2">
+        <h3 className="center">{title}</h3>
+        <div class="s-main-center">
+          {`Profe. : ${profesor}`}
         </div>
-       
-  
-      
-    );
-  }
+        <div class="s-main-center">
+          <a class="button--ghost-alert button--tiny" href="#">
+            {`$ ${price}`}
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
 
+// como declarar propiedades con defecto en caso de que no se le pase 
 
-export default Curso
+Curso.propTypes={
+  title:PropTypes.string,
+  image:PropTypes.string,
+  price: PropTypes.number,
+  profesor: PropTypes.string
+}
+
+Curso.defaultProps={
+  title: "no se encontro titulo",
+  image: "https://us.123rf.com/450wm/kasto/kasto1511/kasto151100030/47504979-puente-de-brooklyn-y-horizonte-de-la-ciudad-de-nueva-york-manhattan-en-la-oscuridad-con-los-rascacie.jpg?ver=6",
+  price: "--",
+  profesor: "no hay profesor"
+}
+
+export default Curso;
