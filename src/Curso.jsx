@@ -1,20 +1,24 @@
 import React from "react";
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 
-function Curso({image,title,price,profesor}) {
+function Curso({id,image,title,price,profesor}) {
   return (
-    <article class="card">
-      <div class="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-        <img src={image} alt={title} />
+    <article className="card">
+      <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
+        <Link to={`/cursos/${id}`}>
+          <img src={image} alt={title} />
+        </Link>
+        
       </div>
-      <div class="card__data s-border s-radius-br s-radius-bl s-pxy-2">
+      <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
         <h3 className="center">{title}</h3>
-        <div class="s-main-center">
+        <div className="s-main-center">
           {`Profe. : ${profesor}`}
         </div>
-        <div class="s-main-center">
-          <a class="button--ghost-alert button--tiny" href="#">
+        <div className="s-main-center">
+          <a className="button--ghost-alert button--tiny" href="https://ed.team">
             {`$ ${price}`}
           </a>
         </div>
